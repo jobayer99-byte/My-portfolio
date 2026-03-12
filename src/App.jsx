@@ -24,9 +24,11 @@ function App() {
       delay: 100
     })
 
-    // Mouse trail effect
+    // Mouse trail effect - disabled on mobile for performance
+    const isMobile = window.innerWidth <= 768
+    
     const handleMouseMove = (e) => {
-      if (Math.random() > 0.9) {
+      if (!isMobile && Math.random() > 0.9) {
         const particle = document.createElement('div')
         particle.className = 'mouse-particle'
         particle.style.left = e.clientX + 'px'
@@ -37,13 +39,17 @@ function App() {
       }
     }
 
-    document.addEventListener('mousemove', handleMouseMove)
+    if (!isMobile) {
+      document.addEventListener('mousemove', handleMouseMove)
+    }
 
     console.log('%c🔥 Portfolio Loaded Successfully! 🔥', 'color: #00f3ff; font-size: 20px; font-weight: bold;')
     console.log('%cBuilt with ❤️ using React, HTML, CSS & JavaScript', 'color: #ff00ff; font-size: 14px;')
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
+      if (!isMobile) {
+        document.removeEventListener('mousemove', handleMouseMove)
+      }
     }
   }, [])
 
