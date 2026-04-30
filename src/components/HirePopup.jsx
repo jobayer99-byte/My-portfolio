@@ -5,8 +5,12 @@ function HirePopup({ show, onClose }) {
     window.open('https://www.fiverr.com/jobxor', '_blank', 'noopener,noreferrer')
   }
 
-  const handleWhatsApp = () => {
-    window.open('https://wa.me/8801813505184', '_blank', 'noopener,noreferrer')
+  const handleLinkedIn = () => {
+    window.open('https://www.linkedin.com/in/jobayer-ahmmed01', '_blank', 'noopener,noreferrer')
+  }
+
+  const handleFacebook = () => {
+    window.open('https://www.facebook.com/share/1DuWfNwJkf/', '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -21,10 +25,15 @@ function HirePopup({ show, onClose }) {
             <span>Hire on Fiverr</span>
             <small>Professional freelance services</small>
           </button>
-          <button className="hire-option-btn whatsapp-btn" onClick={handleWhatsApp}>
-            <i className="fab fa-whatsapp"></i>
-            <span>Chat on WhatsApp</span>
-            <small>Direct instant messaging</small>
+          <button className="hire-option-btn linkedin-btn" onClick={handleLinkedIn}>
+            <i className="fab fa-linkedin"></i>
+            <span>Connect on LinkedIn</span>
+            <small>Professional networking</small>
+          </button>
+          <button className="hire-option-btn facebook-btn" onClick={handleFacebook}>
+            <i className="fab fa-facebook"></i>
+            <span>Message on Facebook</span>
+            <small>Direct messaging</small>
           </button>
         </div>
       </div>

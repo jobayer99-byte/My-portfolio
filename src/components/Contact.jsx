@@ -10,10 +10,10 @@ function Contact({ onMessageClick }) {
           <div className="contact-info" data-aos="fade-up">
             <div className="contact-item-wrapper">
               <div className="contact-item-content">
-                <i className="fas fa-envelope"></i>
-                <span>ahammedjobayer6@gmail.com</span>
+                <i className="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
               </div>
-              <a href="mailto:ahammedjobayer6@gmail.com" className="go-btn" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/jobayer-ahmmed01" className="go-btn" target="_blank" rel="noopener noreferrer">
                 <span>Go</span>
                 <i className="fas fa-arrow-right"></i>
               </a>

@@ -1,35 +1,44 @@
 import { useState, useEffect } from 'react'
+import pic1 from '../assets/portfolio1.jpg.jpeg'
+import pic2 from '../assets/portfolio2.jpg.jpeg'
+import pic3 from '../assets/portfolio3.png'
+import pic4 from '../assets/portfolio4.jpg.jpeg'
 
 function Hero({ onHireClick }) {
   const [displayName, setDisplayName] = useState('')
   const [charIndex, setCharIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [prevImageIndex, setPrevImageIndex] = useState(0)
   
   const fullName = 'Jobayer Ahammed'
+  const images = [pic1, pic2, pic3, pic4]
 
   useEffect(() => {
     let timeout
 
-    if (isDeleting) {
-      timeout = setTimeout(() => {
-        setDisplayName(fullName.substring(0, charIndex - 1))
-        setCharIndex(charIndex - 1)
-      }, 30)
-    } else {
+    if (charIndex < fullName.length) {
       timeout = setTimeout(() => {
         setDisplayName(fullName.substring(0, charIndex + 1))
         setCharIndex(charIndex + 1)
-      }, 80)
-    }
-
-    if (!isDeleting && charIndex === fullName.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1000)
-    } else if (isDeleting && charIndex === 0) {
-      timeout = setTimeout(() => setIsDeleting(false), 500)
+      }, 100) // Faster typing - 100ms per character
+    } else {
+      timeout = setTimeout(() => {
+        setDisplayName('')
+        setCharIndex(0)
+      }, 2000) // Longer pause before restart - 2 seconds
     }
 
     return () => clearTimeout(timeout)
-  }, [charIndex, isDeleting])
+  }, [charIndex])
+
+  // Image carousel with faster slide animation
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setPrevImageIndex(currentImageIndex)
+      setCurrentImageIndex((prev) => (prev + 1) % images.length)
+    }, 2500) // Changed from 4000ms to 2500ms for faster slides
+    return () => clearInterval(imageInterval)
+  }, [currentImageIndex])
 
   return (
     <section id="home" className="hero">
@@ -46,10 +55,14 @@ function Hero({ onHireClick }) {
                 ))}
               </div>
             </div>
-            <div className="image-wrapper">
-              <img src="https://i.ibb.co.com/Bks8bvY/Picsart-25-05-05-12-15-59-662.jpg" alt="Profile" />
-              <div className="glow-ring"></div>
-              <div className="glow-ring-2"></div>
+            <div className="image-carousel">
+              {images.map((img, index) => (
+                <div 
+                  key={index} 
+                  className={`carousel-image ${index === currentImageIndex ? 'active' : index === prevImageIndex ? 'prev' : ''}`}
+                  style={{ backgroundImage: `url(${img})` }}
+                ></div>
+              ))}
             </div>
             <a 
               href="https://drive.google.com/file/d/182txg6OIXnkAtNMnKJznpclni4wMaWKu/view?usp=drive_link" 
@@ -68,18 +81,17 @@ function Hero({ onHireClick }) {
             <span id="typed-name">{displayName}</span>
           </h1>
           <p className="hero-subtitle">
+            <span className="role">CEO & Founder Dev Learners Academy</span>
+            <br />
             <span className="role">Cyber Security Specialist & Ethical Hacker</span>
             <br />
-            <span className="role">Web Developer</span>
+            <span className="role">Web Developer | Wordpress Security Specialist | IT professional</span>
             <br />
-            <span className="role">Network Engineer</span>
-          </p>
-          <p className="hero-description">
-            Passionate about <span className="highlight">Securing & Building</span> Modern Web & Network Solutions
+            <span className="role">From AWS & Progroming hero 💖🌍</span>
           </p>
           <div className="social-links">
             <a href="https://github.com/jobayer99-byte" className="social-icon" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
-            <a href="https://wa.me/8801813505184" className="social-icon" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/jobayer-ahmmed01" className="social-icon" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
             <a href="https://www.facebook.com/jobayer.ahammed.494102" className="social-icon" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
           </div>
           <button className="hire-btn" onClick={onHireClick}>

@@ -15,8 +15,10 @@ function ContactForm({ show, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    // Create mailto link with form data
-    const mailtoLink = `mailto:ahammedjobayer6@gmail.com?subject=${encodeURIComponent(formData.subject || 'Message from Portfolio')}&body=${encodeURIComponent(
+    // Create mailto link - Opens user's email client
+    const mailtoLink = `mailto:ahammedjobayer6@gmail.com?subject=${encodeURIComponent(
+      formData.subject || 'Message from Portfolio'
+    )}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`
     
@@ -33,7 +35,7 @@ function ContactForm({ show, onClose }) {
       <div className="popup-content contact-form-popup" onClick={(e) => e.stopPropagation()}>
         <button className="popup-close" onClick={onClose}>&times;</button>
         <h2>Send Me a Message</h2>
-        <p className="popup-subtitle">Fill the form and your email client will open</p>
+        <p className="popup-subtitle">Your email client will open with the message</p>
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -86,7 +88,7 @@ function ContactForm({ show, onClose }) {
         
         <div className="form-note">
           <i className="fas fa-info-circle"></i>
-          <span>Your default email app will open with the message</span>
+          <span>Your email app will open to send the message to ahammedjobayer6@gmail.com</span>
         </div>
       </div>
     </div>

@@ -32,8 +32,8 @@ function Skills() {
       title: 'Cyber Security',
       tags: ['Ethical Hacking', 'Kali Linux', 'Penetration Testing', 'SIEM'],
       skills: [
-        { name: 'Ethical Hacking', percent: 85 },
-        { name: 'Penetration Testing', percent: 80 }
+        { name: 'Ethical Hacking', percent: 92 },
+        { name: 'Penetration Testing', percent: 90 }
       ],
       delay: 100
     },
@@ -42,20 +42,18 @@ function Skills() {
       title: 'Web Development',
       tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB'],
       skills: [
-        { name: 'React', percent: 90 },
-        { name: 'JavaScript', percent: 88 }
+        { name: 'React', percent: 85 },
+        { name: 'JavaScript', percent: 82 }
       ],
       delay: 200
-    }
-
-    ,
+    },
     {
-      icon: 'fa-network-wired',
-      title: 'Networking',
-      tags: ['TCP/IP', 'Cisco', 'Wireshark', 'Routing & Switching'],
+      icon: 'fa-bullhorn',
+      title: 'Social Media Management',
+      tags: ['Facebook', 'Instagram', 'Content Strategy', 'Analytics'],
       skills: [
-        { name: 'Cisco', percent: 75 },
-        { name: 'Network Security', percent: 82 }
+        { name: 'Content Creation', percent: 95 },
+        { name: 'Social Strategy', percent: 95 }
       ],
       delay: 300
     }

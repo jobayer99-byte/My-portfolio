@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState('home')
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,17 +27,29 @@ function Navbar() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
+    setIsMobileMenuOpen(false) // Close menu after clicking
+  }
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode)
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'light' : 'dark')
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="logo">
-          <i className="fas fa-code"></i>
-          <span>Jobayer's Portfolio</span>
-        </div>
-        <ul className="nav-menu">
-          {['home', 'about', 'education', 'skills', 'learning', 'contact'].map(item => (
+        {/* Mobile Menu Toggle - Left side */}
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+          <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+        </button>
+
+        {/* Menu - Left side on desktop */}
+        <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+          {['home', 'about', 'education', 'skills', 'company', 'contact'].map(item => (
             <li key={item}>
               <a
                 href={`#${item}`}
@@ -50,7 +64,19 @@ function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Logo - Center */}
+        <div className="logo">
+          <i className="fas fa-code"></i>
+          <span>Jobayer's Portfolio</span>
+        </div>
+        
+        {/* Actions - Right side */}
         <div className="nav-actions">
+          <button className="theme-toggle" onClick={toggleTheme} title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+            <i className="fas fa-moon"></i>
+            <i className="fas fa-sun"></i>
+          </button>
           <button className="download-cv" onClick={() => {
             const link = document.createElement('a');
             link.href = '/CV_Jobayer_Ahammed.pdf';

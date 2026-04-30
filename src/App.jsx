@@ -5,7 +5,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Education from './components/Education'
 import Skills from './components/Skills'
-import Learning from './components/Learning'
+import Company from './components/Company'
 import Contact from './components/Contact'
 import HirePopup from './components/HirePopup'
 import ContactForm from './components/ContactForm'
@@ -61,7 +61,7 @@ function App() {
       <About />
       <Education />
       <Skills />
-      <Learning />
+      <Company />
       <Contact onMessageClick={() => setShowContactForm(true)} />
       <HirePopup show={showHirePopup} onClose={() => setShowHirePopup(false)} />
       <ContactForm show={showContactForm} onClose={() => setShowContactForm(false)} />
