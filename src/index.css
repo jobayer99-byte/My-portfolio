@@ -2254,6 +2254,10 @@ body {
         order: 2;
     }
 
+    .logo i {
+        display: none;
+    }
+
     .nav-menu {
         position: fixed;
         top: 70px;
