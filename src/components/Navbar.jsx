@@ -27,7 +27,7 @@ function Navbar() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
-    setIsMobileMenuOpen(false) // Close menu after clicking
+    setIsMobileMenuOpen(false)
   }
 
   const toggleTheme = () => {
@@ -37,6 +37,15 @@ function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a')
+    link.href = '/Resume_Jobayer_Ahammed.pdf'
+    link.download = 'Resume_Jobayer_Ahammed.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
@@ -77,15 +86,8 @@ function Navbar() {
             <i className="fas fa-moon"></i>
             <i className="fas fa-sun"></i>
           </button>
-          <button className="download-cv" onClick={() => {
-            const link = document.createElement('a');
-            link.href = '/CV_Jobayer_Ahammed.pdf';
-            link.download = 'CV_Jobayer_Ahammed.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}>
-            <i className="fas fa-download"></i> Download CV
+          <button className="download-cv" onClick={handleDownloadResume}>
+            <i className="fas fa-download"></i> Resume
           </button>
         </div>
       </div>

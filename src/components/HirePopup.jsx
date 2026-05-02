@@ -10,7 +10,7 @@ function HirePopup({ show, onClose }) {
   }
 
   const handleFacebook = () => {
-    window.open('https://www.facebook.com/share/1DuWfNwJkf/', '_blank', 'noopener,noreferrer')
+    window.open('https://www.facebook.com/share/17ex1W3QLj/', '_blank', 'noopener,noreferrer')
   }
 
   return (
